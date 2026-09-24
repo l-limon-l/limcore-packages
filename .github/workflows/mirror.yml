@@ -26,3 +26,7 @@ jobs:
       - name: byedpi
         if: ${{ !cancelled() }}
         run: bash mirror.sh byedpi 1andrevich/ByeDPI-OpenWrt 's/^byedpi_[^_]+_/byedpi_/'
+
+      - name: refilter
+        if: ${{ !cancelled() }}
+        run: bash mirror.sh refilter 1andrevich/Re-filter-lists
