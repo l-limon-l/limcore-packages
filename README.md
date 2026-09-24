@@ -1,7 +1,8 @@
 # limcore-packages
 
 Copies of the OpenWrt packages [LimCore](https://github.com/l-limon-l/LimCoreWRT) installs
-on demand, kept here so an upstream repository going away does not break installs.
+on demand. LimCore installs them only from here, so an upstream repository going away
+breaks nothing.
 
 | Package | Upstream packaging | Original project |
 |---|---|---|
@@ -16,5 +17,3 @@ A [workflow](.github/workflows/mirror.yml) checks upstream every six hours and p
   the upstream version it holds. ByeDPI files lose the version from their names
   (`byedpi_<arch>.apk`), so the download URL never changes.
 - **`zapret2-<tag>`, `byedpi-<tag>`** — a frozen copy of every upstream release seen.
-
-LimCore falls back to the upstream repositories if a file is missing here.
