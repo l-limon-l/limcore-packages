@@ -1,0 +1,28 @@
+name: Mirror
+
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: mirror
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: zapret2
+        run: bash mirror.sh zapret2 1andrevich/zapret2-openwrt
+
+      # byedpi_0.17.3_aarch64_cortex-a53.apk -> byedpi_aarch64_cortex-a53.apk
+      - name: byedpi
+        if: ${{ !cancelled() }}
+        run: bash mirror.sh byedpi 1andrevich/ByeDPI-OpenWrt 's/^byedpi_[^_]+_/byedpi_/'
